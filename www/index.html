@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>首页</title>
+    </head>
+    <body>
+        <h1>首页</h1>
+        <p>
+            此页面仅供演示，请随意替换它
+        </p>
+        <h3>api 状态</h3>
+        <p id="api"></p>
+        <script>
+            fetch('/api', {method: 'POST'}).then(res =>{
+                return res.text()
+            }).then(res=>{
+                document.getElementById('api').innerText = res;
+            })
+        </script>
+    </body>
+</html>
