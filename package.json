@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "simple http server ready for demo",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "node ./index.js"
+    "start": "node ./index.js",
+    "gzip": "cp -r ./www/ ./www.gz && npx gzipper c -t 2048 --remove-larger ./www.gz ",
+    "brotli": "cp -r ./www/ ./www.br && npx gzipper c -t 0 --brotli --remove-larger ./www.br "
   },
   "author": "TurboExtension",
   "license": "GPL-3.0",

@@ -26,11 +26,10 @@ app.use(api.routes());
 
 app.use(async (ctx, next) => {
     console.log(`[${formatDate(new Date())}] ${ctx.method}: ${ctx.href}`);
-    if ('/' == ctx.path) await send(ctx, path.normalize('./www/index.html'));
-    else if(ctx.path.startsWith('/api')) await next();
-    else await send(ctx, ctx.path, { root: path.join(__dirname, 'www') });
+    if(ctx.path.startsWith('/api')) await next();
+    else await send(ctx, ctx.path, { root: path.join(__dirname, 'www'), index: 'index.html' });
 })
 
 app.listen(port, host);
 
-console.log(`服务已启动，地址: http://${host}:${port}`);
+console.log(`服务已启动，地址: http://${host}:${port}\n`);
